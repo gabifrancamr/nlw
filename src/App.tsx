@@ -1,6 +1,6 @@
 import logo from './assets/Logo-nlw.svg'
-import { NoteCard } from './components/note-card'
-import { NewNoteCard } from './components/new-note-card'
+import { NoteCard } from './components/Note-card'
+import { NewNoteCard } from './components/New-note-card'
 
 export function App() {
   return (
@@ -19,12 +19,12 @@ export function App() {
       <div className="grid grid-cols-3 gap-6  auto-rows-[250px]">
         <NewNoteCard />
 
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
-        <NoteCard />
+        <NoteCard
+          note={{
+            date: new Date(),
+            content: 'Hello World',
+          }}
+        />
       </div>
     </div>
   )
