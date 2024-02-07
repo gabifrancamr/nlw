@@ -1,11 +1,14 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useContext, useState } from 'react'
 import { toast } from 'sonner'
+import { NotesContext } from '../context/NotesContext'
 
 export function NewNoteCard() {
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true)
   const [content, setContent] = useState('')
+
+  const { addNote } = useContext(NotesContext)
 
   function handleStartEditor() {
     setShouldShowOnboarding(false)
@@ -22,7 +25,7 @@ export function NewNoteCard() {
   function handleSaveNote(e: FormEvent) {
     e.preventDefault()
 
-    console.log(content)
+    addNote(content)
 
     toast.success('Nota criada com sucesso!')
   }
