@@ -52,7 +52,7 @@ export function NewNoteCard({ onNoteCreated }: NewNoteCardProps) {
     }
 
     setIsRecording(true)
-    setShouldShowOnboarding(false) 
+    setShouldShowOnboarding(false)
 
     const SpeechRecognitionAPI =
       window.SpeechRecognition || window.webkitSpeechRecognition
