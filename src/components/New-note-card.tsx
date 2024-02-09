@@ -165,7 +165,7 @@ export function NewNoteCard() {
                 className="w-full flex justify-center items-center gap-2 bg-slate-800 py-4 text-center text-sm text-slate-100 outline-none font-medium hover:enabled:bg-slate-900"
               >
                 <div className="size-3 rounded-full bg-red-500 animate-pulse" />
-                Gravando! (clique para interromper)
+                Gravando... (clique para interromper)
               </button>
             ) : (
               <button
