@@ -22,23 +22,8 @@ export function App() {
       <div className="grid grid-cols-3 gap-6  auto-rows-[250px]">
         <NewNoteCard />
 
-        <NoteCard
-          note={{
-            id: 'jdhjdsj',
-            date: new Date(),
-            content: 'Hello World',
-          }}
-        />
-
         {notes.map((item) => (
-          <NoteCard
-            key={item.note.id}
-            note={{
-              id: item.note.id,
-              date: item.note.date,
-              content: item.note.content,
-            }}
-          />
+          <NoteCard key={item.id} note={item} />
         ))}
       </div>
     </div>

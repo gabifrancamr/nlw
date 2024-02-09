@@ -6,7 +6,7 @@ import { useContext } from 'react'
 import { NotesContext } from '../context/NotesContext'
 import { toast } from 'sonner'
 
-export interface NoteCardProps {
+interface NoteCardProps {
   note: {
     id: string
     date: Date

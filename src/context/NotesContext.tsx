@@ -1,9 +1,14 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
-import { NoteCardProps } from '../components/Note-card'
 import { v4 as uuidv4 } from 'uuid'
 
+interface Note {
+  id: string
+  date: Date
+  content: string
+}
+
 interface NotesContextType {
-  notes: NoteCardProps[]
+  notes: Note[]
   addNote: (noteText: string) => void
   deleteNote: (noteId: string) => void
 }
@@ -17,7 +22,7 @@ interface NotesContextProviderProps {
 const NOTES_STORAGE_KEY = 'notesItems'
 
 export function NotesContextProvider({ children }: NotesContextProviderProps) {
-  const [notes, setNotes] = useState<NoteCardProps[]>(() => {
+  const [notes, setNotes] = useState<Note[]>(() => {
     const storageNoteItems = localStorage.getItem(NOTES_STORAGE_KEY)
 
     if (storageNoteItems) {
@@ -28,12 +33,10 @@ export function NotesContextProvider({ children }: NotesContextProviderProps) {
   })
 
   function addNote(noteText: string) {
-    const newNote: NoteCardProps = {
-      note: {
-        id: uuidv4(),
-        date: new Date(),
-        content: noteText,
-      },
+    const newNote = {
+      id: uuidv4(),
+      date: new Date(),
+      content: noteText,
     }
 
     setNotes((state) => [...state, newNote])
@@ -41,10 +44,10 @@ export function NotesContextProvider({ children }: NotesContextProviderProps) {
 
   function deleteNote(noteId: string) {
     console.log(noteId)
-    const noteExist = notes.findIndex((item) => item.note.id === noteId)
+    const noteExist = notes.findIndex((item) => item.id === noteId)
 
     if (noteExist >= 0) {
-      const newNotes = notes.filter((item) => item.note.id !== noteId)
+      const newNotes = notes.filter((item) => item.id !== noteId)
 
       setNotes(newNotes)
     }
